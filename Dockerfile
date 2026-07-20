@@ -7,6 +7,7 @@ RUN pip install --no-cache-dir --upgrade pip && \
 
 FROM python:3.14-alpine
 RUN apk update && apk upgrade --no-cache
+RUN apk add --no-cache curl
 RUN addgroup -S app && adduser -S app -G app
 COPY --from=builder /venv /venv
 ENV PATH="/venv/bin:$PATH"
